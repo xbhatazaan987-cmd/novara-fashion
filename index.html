@@ -181,6 +181,44 @@ function addCart() {
 }
 </script>
 
+<section id="novara-cart" style="padding:20px;background:#f5eee7;text-align:center;">
+<h2>NOVARA SHOPPING CART</h2>
+<div id="novara-items">Your cart is empty.</div>
+<h3>Total: ₹<span id="novara-total">0</span></h3>
+<button onclick="novaraCheckout()" style="background:black;color:white;padding:12px 25px;">
+Demo Checkout
+</button>
+</section>
+
+<script>
+let novaraCart = [];
+
+function novaraAdd(name, price, size) {
+ novaraCart.push({name, price, size});
+ novaraUpdate();
+}
+
+function novaraUpdate() {
+ document.getElementById("novara-items").innerHTML =
+ novaraCart.map((p,i) =>
+ `<p>${p.name} | ${p.size} | ₹${p.price}
+ <button onclick="novaraRemove(${i})">Remove</button></p>`
+ ).join("") || "Your cart is empty.";
+
+ document.getElementById("novara-total").innerText =
+ novaraCart.reduce((a,p)=>a+p.price,0);
+}
+
+function novaraRemove(i) {
+ novaraCart.splice(i,1);
+ novaraUpdate();
+}
+
+function novaraCheckout() {
+ alert("This is a demo checkout. No real order or payment placed.");
+}
+</script>
+
 </body>
 </html>
 
