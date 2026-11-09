@@ -219,6 +219,40 @@ function novaraCheckout() {
 }
 </script>
 
+<section style="background:#f5eee7;padding:20px;margin:15px;border-radius:10px">
+<h2> NOVARA CHECKOUT </h2>
+
+<input id="customerName" placeholder="Your Name" style="padding:12px;width:100%;margin:7px 0">
+
+<input id="customerPhone" placeholder="Mobile Number" style="padding:12px;width:100%;margin:7px 0">
+
+<textarea id="customerAddress" placeholder="Delivery Address" style="padding:12px;width:100%;margin:7px 0"></textarea>
+
+<h3>Order Total: ₹<span id="checkoutTotal">0</span></h3>
+
+<button onclick="placeDemoOrder()" style="background:black;color:white;padding:14px;width:100%">
+PLACE DEMO ORDER
+</button>
+</section>
+
+<script>
+function placeDemoOrder(){
+const name=document.getElementById("customerName").value;
+const phone=document.getElementById("customerPhone").value;
+const address=document.getElementById("customerAddress").value;
+
+if(!name || !phone || !address){
+alert("Please fill all details");
+return;
+}
+
+document.getElementById("checkoutTotal").innerText=
+document.getElementById("novara-total")?.innerText || "0";
+
+alert("Demo checkout successful! No real order or payment was placed.");
+}
+</script>
+
 </body>
 </html>
 
